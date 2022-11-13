@@ -1,0 +1,278 @@
+body {
+    background-color: rgb(19, 18, 22);
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: segoe ui
+}
+
+.swiper-wrapper {
+    flex-direction: row
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-wrap: nowrap;
+    // justify-content: center;
+    text-align: center;
+}
+
+button,
+p,
+a,
+small,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+
+input {
+    font-weight: inherit;
+    text-transform: inherit;
+    font-family: inherit;
+    color: inherit;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-grow: 1;
+    text-align: center;
+    justify-content: center;
+    margin: 0.5px;
+    padding: 0;
+    outline: 0px solid red;
+}
+
+label {
+    color: white;
+    text-align: left
+}
+
+button {
+    border: 0px;
+    background-color: white;
+    padding:1.5vh 0.5vh
+}
+
+h2 {
+    font-size: 35px
+}
+
+input {
+    display: block;
+    width: 5px;
+    text-align: center;
+    justify-content: center
+}
+
+.H {
+    flex-direction: row
+}
+
+.NoGrow {
+    flex-grow: 0
+}
+
+input,
+input:active {
+    font-size: 30px;
+    background-color: transparent;
+    border: 0;
+    outline: 0
+}
+
+.NoGrow + {
+    display: none
+}
+
+.GameInfoPanel {
+    background-color: rgb(35, 33, 49);
+    color: white;
+    ;
+    padding: 1vh 0
+}
+
+.TName {
+    margin-top: -3px;
+    justify-content: flex-start;
+    display: block;
+    height: 2px
+}
+
+.Tbar {
+
+    background: linear-gradient(45deg, rgba(255, 0, 0, 00) 20%, rgba(19, 18, 22, 1) 20.1%);
+    background-color: red;
+    color: white;
+    padding: 0.5vh 0
+}
+
+.t2bar {
+
+    background: linear-gradient(-45deg, rgba(255, 0, 0, 00) 20%, rgba(19, 18, 22, 1) 20.1%);
+    background-color: blue;
+    color: white;
+    padding: 0.5vh 0
+}
+
+.Tcity {
+    margin-top: -5px;
+    font-weight: 300
+}
+
+button.Nobackground {
+    padding: 0;
+    background-color: transparent;
+    color: white;
+    font-size: 100px;
+    justify-content: center
+}
+
+button .feather {
+    width: 30px;
+    height: 30px;
+    stroke: currentColor;
+    stroke-width: 1px !important;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    padding: 0.5vh
+
+
+}
+
+
+.buttontext {
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+}
+small.buttontext{font-weight: normal; font size:8px}
+
+.EventButton,
+.FoulButton,
+.ScoringButton {
+    flex-basis: 20%;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.PlayerButton,
+.EventButton {
+    color: white;
+    background-color: rgb(38, 41, 50)
+}
+
+.ScoringButton {
+    color: white;
+    background-color: #ff003c
+}
+
+.FoulButton {
+    color: white;
+    background-color: rgb(37, 32, 62)
+}
+
+.PlayerButton {
+    flex-basis: 20%;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.MessageScroller {
+    background-color: rgb(38, 41, 50);
+    margin: 0 1vh;
+    height: 50vh;
+    overflow-y: scroll
+}
+
+ul {
+    padding: 0;
+    display: block;
+    width: 100%;
+    color: white;
+    text-align: left;
+    font-weight: 300;
+    text-transform: none
+}
+
+#textbox {
+    display: flex;
+    height: 22px;
+    margin-top: 2vh
+}
+
+#textbox textarea,
+#textbox button,#textbox textarea:active,
+#textbox button :active {
+    height: inherit;
+    border-radius:15px
+}
+
+#textbox textarea {
+    resize: none;
+    flex-grow: 1;
+    padding-left:15px;
+    font-size:21px;
+    font-family: helvetica, roboto, arial;
+    font-weight: bold;
+    vertical-align: middle;
+    justify-content: center;
+    height:25px;
+}
+
+#textbox textarea:focus {
+    border:none;outline: 0px;
+}
+#textbox textarea:active {
+    border:none;outline: 0px;
+}
+
+
+#textbox button {
+    flex-grow: 0
+}
+
+#message {
+    margin: 0 5px;
+    height: inherit;
+    resize: none;
+    padding: 5px
+}
+
+#timerdownpanel{background-color:red}
+#timeryppanel{background-color:blue}
+#messages li {
+    display: block;
+    list-style: none;
+    float: left;
+    background-color: transparent;
+    text-indent: 0;
+    padding: 10px;
+    margin: 0 border: 0.1vh solid #ccc;
+    margin-right: 6vw;
+    margin-left: 3vw;
+    margin-bottom: 5px;
+    border-radius: 2vw 2vw 2vw 0;
+    background-color: rgb(45, 50, 60)
+}
+#messages li p,#messages li small{justify-content: flex-start}
+
+#messages .me {
+    float: right;
+    margin-right: 3vw;
+    margin-left: 6vw;
+    border-radius: 2vh 2vh 0 2vh;
+    background-color: rgb(25, 30, 40);
+    
+}
+li p{text-align:inherit}
+
+#messages {
+    display: flex; flex-direction: column-reverse
+}
+

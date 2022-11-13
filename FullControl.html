@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Swiper demo - navigation</title>
+	<!-- Link Swiper's CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="/static/controlstyles.css">
+<link rel="stylesheet" href="public/controlstyles.css">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<body>
+    
+    <div class="periods H" id="periodsPanel">
+        <button class="button-period" id="Period1 button-period">1</button>
+        <button class="button-period" id="Period2 button-period">2</button>
+        <button class="button-period" id="Period3 button-period">3</button>
+        <button class="button-period" id="Period4 button-period">4</button>
+        <button class="button-period" id="Period5 button-period">OT</button>
+    </div>
+    
+    <div class="GameInfoPanel H">
+    <div >
+        <h2 class="NoGrow" id="t1score">23</h2>
+        <p class="NoGrow" id="t1name">CBS</p>
+        </div>
+         <div >
+             <div class="H"  id="timeruppanel">
+             <input type="number" id="minutes" name="minutes" required minlength="3" maxlength="3" size="10" value="00"  oninput="SendTime()" onclick="select()" />
+                <p class="NoGrow" style="font-size:25px; margin-left:0; margin-right:0">&nbsp;:&nbsp;</p>
+                <input type="number" id="seconds" name="seconds" required minlength="2" maxlength="2" size="10" value="00"  oninput="SendTime()"  onclick="select();
+            "/>
+             </div>
+             <div class="H" id="timerdownpanel" style="display:none" >
+                 <input type="number" id="minutesinv" name="minutesinv" required minlength="3" maxlength="3" size="10" value="00"  oninput="SendTimeInv()" onclick="select()" />
+                 <p class="NoGrow" style="font-size:25px; margin-left:0; margin-right:0">&nbsp;:&nbsp;</p>
+                 <input type="number" id="secondsinv" name="secondsinv" required minlength="2" maxlength="2" size="10" value="00"  oninput="SendTimeInv()"  onclick="select();
+            "/>
+             </div>
+             <div class="H" style="color:black">
+             <button class="timebutton  Nobackground" id="playpausebtn" onclick="RunTimer()"><i data-feather="play-circle" ></i></button>
+                 
+                <button class="timebutton Nobackground " onclick="ResetTimer()"><i data-feather="delete" ></i></button>
+             
+             </div>
+        </div>
+         <div>
+             <h2  id="t2score">23</h2>
+        <p  id="t2name">CBS</p>
+        </div>
+    
+    
+    
+    </div>
+    
+	<!-- Swiper -->
+	<div class="swiper-container" style="outline:0px solid blue; display: block">
+		<div class="swiper-wrapper" style="display:flex; flex">
+			<div class="swiper-slide">
+            <div class="Tbar t1bar" id="t1color">
+               
+                <div class="Tdata">
+                <h3 id="T1Selector">nom</h3>
+                <small class="Tcity" id="t1city">MArseille</small>
+                </div>
+                </div>
+                <div class="Panelscontainer T1Panels">
+                <div class="ScoringPanel H" id='ScoringPanel' style="flex-wrap:wrap">
+            <button class="ScoringButton">TD</button>
+                    <button class="ScoringButton">BOUTON DE SCORE</button>
+                    <button class="ScoringButton">BOUTON DE SCORE</button>
+                    <button class="ScoringButton">BOUTON DE SCORE</button>
+                    <button class="ScoringButton">BOUTON DE SCORE</button>
+                    <button class="ScoringButton">BOUTON DE SCORE</button>
+            
+        </div>
+        
+        <div class="EventPanel H" id='EventPanel' style="flex-wrap: wrap">
+            <button class="EventButton"> FAIT DE JEU</button>
+            <button class="EventButton">int</button>
+            <button class="EventButton">Foul</button>
+            <button class="EventButton">YCard</button>
+            <button class="EventButton">marcher avec le ballon</button>
+            
+        </div>
+        
+        <div class="FoulPanel H" id='FoulPanel' style="flex-wrap: wrap">
+            <button class="FoulButton">BOUTON DE FAUTE</button>
+          <button class="FoulButton">BOUTON DE FAUTE</button>
+            <button class="FoulButton">BOUTON DE FAUTE</button>
+            <button class="FoulButton">BOUTON DE FAUTE</button>
+            <button class="FoulButton">BOUTON DE FAUTE</button>
+        </div>
+                </div>
+            
+                <label style="padding:1vh"><br/>PARTICIPANTS</label>
+        <div class="PlayersPanel H" id="PlayersPanel" style="flex-wrap: wrap; margin:1vh">
+            <button class="PlayerButton">1</button>
+            <button class="PlayerButton">1</button>
+            
+            <button class="PlayerButton">1</button><button class="PlayerButton">1</button>
+            <button class="PlayerButton">1</button>
+            <button class="PlayerButton">1</button>
+            
+            <button class="PlayerButton">1</button>
+            
+            
+        </div>
+            
+            </div>
+			<div class="swiper-slide">
+            <div class="Tbar t2bar" id="t2color">
+               
+                <div class="Tdata">
+                <h3 id="T2Selector">nom2</h3>
+                <small class="Tcity" id="t2city">Paris</small>
+                </div>
+                </div>
+                <div class="Panelscontainer T1Panels">
+                <div class="ScoringPanel H" id='ScoringPanel2' style="flex-wrap:wrap">
+            <button class="ScoringButton">TD</button>
+                    <button class="ScoringButton">BOUTON DE SCORE</button>
+                    <button class="ScoringButton">BOUTON DE SCORE</button>
+                    <button class="ScoringButton">BOUTON DE SCORE</button>
+                    <button class="ScoringButton">BOUTON DE SCORE</button>
+                    <button class="ScoringButton">BOUTON DE SCORE</button>
+            
+        </div>
+        
+        <div class="EventPanel H" id='EventPanel2' style="flex-wrap: wrap">
+            <button class="EventButton"> FAIT DE JEU</button>
+            <button class="EventButton">int</button>
+            <button class="EventButton">Foul</button>
+            <button class="EventButton">YCard</button>
+            <button class="EventButton">marcher avec le ballon</button>
+            
+        </div>
+        
+        <div class="FoulPanel H" id='FoulPanel2' style="flex-wrap: wrap">
+            <button class="FoulButton">BOUTON DE FAUTE</button>
+          <button class="FoulButton">BOUTON DE FAUTE</button>
+            <button class="FoulButton">BOUTON DE FAUTE</button>
+            <button class="FoulButton">BOUTON DE FAUTE</button>
+            <button class="FoulButton">BOUTON DE FAUTE</button>
+        </div>
+                </div>
+            
+                <label style="padding:1vh"><br/>PARTICIPANTS</label>
+        <div class="PlayersPanel H" id="PlayersPanel2" style="flex-wrap: wrap; margin:1vh">
+            <button class="PlayerButton">1</button>
+            <button class="PlayerButton">1</button>
+            
+            <button class="PlayerButton">1</button><button class="PlayerButton">1</button>
+            <button class="PlayerButton">1</button>
+            <button class="PlayerButton">1</button>
+            
+            <button class="PlayerButton">1</button>
+            
+            
+        </div>
+            
+            </div>
+			
+		</div>
+		<!-- Add Arrows
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
+ -->
+	</div>
+
+    <div class="chat" style="align-content: flex-start">
+    
+     <label style="margin:1vh">CHAT</label>
+    <div class="MessageScroller">
+    <ul id="messages">
+       
+    </ul>
+    </div>
+    <form id="textbox">
+        <textarea id="message" onclick="select()" ></textarea>
+        <button style="margin-top:3px" class="Nobackground" type="submit"><i data-feather="send" ></i></button>
+    </form>
+    <div style="clear: both; width:100%"></div>
+    </div>
+    <div style="height: 100px; margin-top:20px">
+    <img src="https://strmr.fr/wp-content/uploads/2018/02/cropped-logo-small.png" style="object-fit: contain"/>
+    </div>
+	<!-- Swiper JS -->
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<!-- Initialize Swiper -->
+	<script>
+		var swiper = new Swiper('.swiper-container', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+	</script>
+    <script>
+    feather.replace();
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+       <script>
+        
+        var socket = io();
+        var Socket = io.connect();
+        var splitUrl = window.location.href;
+        var name = splitUrl.split('/')[5];
+        var room = splitUrl.split('/')[4];
+
+        //button functions
+        document.querySelector('form').addEventListener('submit', ev => {
+            ev.preventDefault();
+            send('message', document.querySelector('#message').value);
+            console.log()
+        })
+var istimerrunning=false;
+        function RunTimer(){
+            console.log("toggle timer");
+            istimerrunning=!istimerrunning;
+            if(istimerrunning==false){
+                socket.emit('Timer Stop','',room,name);
+                chronoStop();
+            }else if (istimerrunning==true){
+                
+                socket.emit('Timer Start','',room,name);
+                
+                
+            }
+        }
+        
+           
+           
+        function send(type, msg) {
+            socket.emit(type, msg, room, name);
+        }
+
+        //Socket functions
+        var incomingmessage = function(msg, Name) {
+
+            var id = "people " + Name;
+            if (Name == name) {
+                id = "me " + Name
+            };
+            var li = document.createElement('li');
+            li.className = id;
+            li.innerHTML = '<p>' + msg + '</p>' + '<small>' + Name + '</small>';
+            document.getElementById('messages').append(li);
+
+        }
+
+socket.on("message",incomingmessage)
+        //Connect to room
+        socket.emit('create', room);
+
+        send('request Init',"");
+      
+
+
+    </script>
+             <script src="/static/socketcommands.js"></script>
+
+</body>
+
+</html>

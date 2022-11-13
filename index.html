@@ -1,0 +1,163 @@
+
+<html>
+
+<head>
+     <meta name="apple-mobile-web-app-capable" content ="yes">
+    <meta name="mobile-web-app-capable" content ="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="title" content="StrmR Remote">
+    <meta name="apple-mobile-web-app-title" content="StrmR Remote">
+    <meta name="application-name" content="StrmR Remote">
+    <meta charset="UTF-8">
+
+<link rel="apple-touch-icon" sizes="128x128" href="/static/icon_128.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/static//icon_192.png">
+
+<link rel="manifest" href="/static/Manifest.json">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        html,body{background-color:rgb(29, 30, 34);; color:white; font-family: helvetica,segoe ui, roboto, arial, sans-serif;font-size:2vh; margin:0;padding:0; font-weight:bold;}
+        textarea{height:5vh; width:20vh;resize: none;background-color:rgb(38, 41, 50);color:white; font-size:2vh; font-weight:bold;padding:1vh; border:0;}
+        a,p{margin:0;padding:0; text-transform: uppercase; }
+        button{font-size:2vh; padding:1vh; min-width:15vh; border: 0px; background-color: white; font-weight:900; text-transform: uppercase}
+        div{display:flex}
+        
+        div {outline:0px solid blue}
+        #container{height:100vh; flex-grow:1}
+        #lower,#upper{flex-grow:1; align-items: center; justify-content: center }
+        #lower{justify-content: flex-start;padding-top: 0vh; height:70vh}
+        #logo { width:55vh}
+        #bottom{position: absolute; bottom:0;left:0; right:0;margin:0;padding:0}
+    
+        .buttonlink{background-color: rgb(38, 41, 50); color:white; font-weight:black;text-decoration: none;display: 
+flex;font-weight:100; text-transform: uppercase; max-width:35vh; width:90%; align-items: center; flex-direction: column; outline:0px solid; font-size:1.3vh ; margin:1px}
+    
+        .buttonlink i{height:10vh; margin:1vh;; font-size:10vh; text-align: center;margin-bottom:2vh; }
+        .buttonlink svg{height:10vh;width:10vh; margin:0vh;; font-size:10vh; text-align: center;margin:0 auto;justify-self: center; stroke-width: 2px}
+        
+        a {color:inherit;text-transform:inherit;color:inherit;text-decoration: inherit; justify-content: center; display:flex;text-align:center; flex-direction: column; margin: 3vh}
+        a span{margin-top:2vh; height:2vw}
+        .butttonsholder{ flex-direction: column; justify-content: center; align-content: center; text-align: center; display:flex;align-items: center}
+        .feather {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 0.1vh !important;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+          
+           
+}
+@media (orientation: landscape) {
+               .butttonsholder{flex-direction: row;}
+   #upper{height:45vh; width:100vw}
+    #upper img{height:50vh; width:50vw; object-fit:cover}
+             .buttonlink  .feather {
+  width: 20vh;
+  height: 20vh;
+  stroke: currentColor;
+  stroke-width: 0.5px !important;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+          
+           
+}
+    .buttonlink {height:35vh; width:30vh; font-size:3vh}
+            }
+
+        
+    </style>
+    
+    </head>
+    
+    <body>
+    
+        <div id="container" style="display:flex; flex-direction: column;">
+        
+            <div id="upper" style="display:flex; flex-direction: column">
+        
+        <img id="logo" src="https://strmr.fr/wp-content/uploads/2020/07/splash.jpg"/>
+        
+        </div>
+            
+        <div id="lower" style="display:flex; flex-direction: column;">
+        <div class="butttonsholder">
+            <div  class="buttonlink">
+  
+                <a href="https://strmr-sig-server.herokuapp.com/WebRtc"><i data-feather="smartphone" ></i><span>Camera web</span></a>
+                 
+                
+        </div>
+<div  class="buttonlink" >
+    <a href="https://strmrsocket.herokuapp.com/control"><i data-feather="layout" ></i><span>Controle à distance</span></a>
+
+                
+                
+        </div>
+            </div>
+            
+            
+   </div>
+            
+            
+        <div id="bottom" style="display:flex; flex-direction: column;background-color:rgb(38, 41, 50);color:grey; padding:10px; font-size:1.5vh">
+        <p>Copyright StrmR Studio</p>
+        
+        
+        </div>
+            
+        
+        </div>
+    
+    
+        
+        <script>
+        //add to home screen
+        self.addEventListener("fetch", function(event){
+
+});
+        
+        </script>
+        
+        <script type="text/javascript">
+ if ('serviceWorker' in navigator) {
+    console.log("Will the service worker register?");
+    navigator.serviceWorker.register('service-worker.js')
+      .then(function(reg){
+        console.log("Yes, it did.");
+     }).catch(function(err) {
+        console.log("No it didn't. This happened:", err)
+    });
+ }
+</script>
+        
+        <script>
+            if (navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {
+    document.title = document.getElementsByName('apple-mobile-web-app-title')[0].content;
+}
+            
+            
+            function GotoRoom(){
+              var room = document.getElementById('RoomName').value;
+                if(room!=''){
+                    room=room.replace(/\s/g, '');
+                
+                var name = "StrmrController"+Math.floor(Math.random()*1000);
+
+                window.location.href+="/"+room+"/"+name;
+                    }
+                else
+                    alert("veillez insérer un code valide")
+            }
+        
+
+         feather.replace()
+        </script>
+        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+
+
+    </body>
+</html>

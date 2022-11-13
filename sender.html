@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        html,body {width:100vw; height:100vh; margin:0; padding:0; overflow: hidden}
+        .fullscreenvideo{width:100vw; height:100vh; position:absolute; background-color: black}
+        .overlay{position:absolute; display:flex; outline:1px solid blue; width:100vw; text-align: center; display:flex;flex; align-items: center;
+  justify-content: center;}
+        .Liveindicator{background-color:#ff003c; padding:1vw 2vw; font-family: helvetica,segoe ui, roboto; font-weight:900;color:white;font-style: italic; margin-top:2vw
+        }
+        .hidden{display:none}
+    </style>
+    
+    </head>
+<body>
+    
+
+    <video class="fullscreenvideo" volume='0' id="video" autoplay controls></video>
+<div class="overlay">
+    <div class="Liveindicator">LIVE</div>
+    <form class="camselect" >
+  <select name="cams" id="camlist">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="opel">Opel</option>
+    <option value="audi">Audi</option>
+  </select>
+  
+  <input type="submit" value="Submit">
+        
+</form>
+    <button id="flipbtn" onclick="flipcam">flip</button>
+    </div>
+    <div class="hidden">
+    Offer
+    <form>
+        <textarea id="incoming"></textarea>
+        <button type="submit">submit</button>
+    </form>
+    answer
+    <pre id="outgoing"></pre>
+</div>
+    <script src="/static/simplePeer.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        var socket = io();
+        var Socket = io.connect();
+        var splitUrl = window.location.href;
+        var room = splitUrl.split('/')[3];
+        var name = 'sender'
+        let clientanswer = "";
+        let senderoffer = "";
+
+
+        socket.emit('create', room);
+        var send = function() {
+            var text = document.getElementById('m').value;
+            socket.emit('chat message', text, room);
+        }
+
+
+        var receive = function(msg) {
+            console.log(msg)
+            document.querySelector('#incoming').textContent = msg
+
+        }
+
+        var request = function(Name) {
+            if (Name != name) {
+
+                socket.emit('offer', senderoffer, room, name);
+                console.log('request sended :' + 'heres your request')
+            }
+        }
+
+
+        var answer = function(msg, name) {
+            //get answer
+
+            console.log(msg)
+            document.querySelector('#incoming').textContent = msg
+            clientanswer = msg;
+            p.signal(JSON.parse(msg))
+        }
+        //socket.on('offer', offer);
+        socket.on('answer', answer);
+        socket.on('chat message', receive);
+        socket.on('request', request);
+
+
+
+var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+        var mediadevices = navigator.mediaDevices || navigator.mediaDevices.enumerateDevices;
+        
+        if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+  console.log("enumerateDevices() not supported.");
+  ;
+}
+
+// List cameras and microphones.
+let supports = mediadevices.getSupportedConstraints();
+if( supports['facingMode'] === true ) {
+  document.getElementById('flipbtn').disabled = false;
+}else{
+    document.getElementById('flipbtn').disabled = true;
+}
+        
+        
+mediadevices.enumerateDevices()
+.then(function(devices) {
+  devices.forEach(function(device) {
+    console.log(device.kind + ": " + device.label +
+                " id = " + device.deviceId);
+      if(device.kind=='videoinput'){
+      var option=document.createElement('option');
+      option.nodeValue=device.deviceId;
+      option.innerHTML=device.label;
+      camlist.append(option)
+      }
+  });
+})
+.catch(function(err) {
+  console.log(err.name + ": " + err.message);
+});
+        
+function flipcam(){
+    shouldFaceUser=!shouldFaceUser;
+    reset;
+}
+        
+        //offers
+        let shouldFaceUser = false;
+        let p = null;
+        // get video/voice stream
+        var reset=getUserMedia.call
+        (navigator, 
+         {
+            
+            audio: true,
+             video: {
+        width: { min: 640, ideal: 1280, max: 1920 },
+    height: { min: 480, ideal: 720, max: 1080 },
+        facingMode: "environment"
+    }
+  
+        },
+          function (stream) {gotMedia(stream)},
+         function () {}
+                         );
+                         
+                       //  ).then(gotMedia).catch(() => {})
+
+        function gotMedia(stream) {
+            p = new SimplePeer({
+                initiator: true,
+                stream: stream,
+                trickle: false
+            })
+
+
+            p.on('error', err => {
+                console.log('error', err)
+                navigator.mediaDevices.getUserMedia({
+                                        audio: true,
+                    video: true,
+                }).then(gotMedia).catch(() => {})
+            })
+
+            p.on('signal', data => {
+                //console.log('SIGNAL', JSON.stringify(data))
+                document.querySelector('#outgoing').textContent = JSON.stringify(data)
+                senderoffer = JSON.stringify(data);
+            })
+
+            document.querySelector('form').addEventListener('submit', ev => {
+                ev.preventDefault()
+                p.signal(JSON.parse(document.querySelector('#incoming').value))
+            })
+            p.on('disconnect', () => {
+                console.log('disconencted');
+            })
+
+            p.on('connect', () => {
+                console.log('CONNECT')
+                p.send('whatever' + Math.random())
+            })
+            p.on('send Offer', () => {
+
+                SendOffer()
+
+            })
+
+            p.on('data', data => {
+                
+            })
+
+            var video = document.querySelector('video')
+
+            if ('srcObject' in video) {
+                video.srcObject = stream
+            } else 
+            if (window.webkitURL) {
+        video.src = window.webkitURL.createObjectURL(stream);
+    }
+            else
+            {
+                video.src = window.URL.createObjectURL(stream) // for older browsers
+            }
+video.volume=0;
+            video.play()
+            p.on('stream', data => {
+
+            })
+
+        }
+
+        function SendOffer() {
+            //console.log("i'm sending the offer")
+        }
+
+        function SendStream() {
+
+        }
+    </script>
+
+</body>
+
+</html>

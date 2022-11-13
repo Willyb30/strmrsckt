@@ -1,0 +1,16 @@
+{
+  "name": "webrtc",
+  "version": "1.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "simple-peer": "^9.8.0",
+    "socket.io": "^3.0.0"
+  }
+}

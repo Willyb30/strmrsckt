@@ -1,0 +1,25 @@
+{
+  "short_name": "StrmR remote",
+  "name": "StrmR Remote",
+  "theme_color": "#333333",
+  "background_color": "#333333",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "images/android/android-launchericon-48-48.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/icon_96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/icon_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+   "start_url": "/index.html"
+}
