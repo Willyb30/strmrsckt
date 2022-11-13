@@ -40,7 +40,7 @@ app.get('/control/', function(req, res) {
 //res.send('Welcome to time room select'+__dirname);
 });
 app.get('/Webrtc/', function(req, res) {
-  res.sendFile('https://strmr-sig-server.herokuapp.com/WebRtc');
+  res.sendFile('https://strmrlivesigserver.onrender.com/WebRtc');
 //res.send('Welcome to time room select'+__dirname);
 });
 
